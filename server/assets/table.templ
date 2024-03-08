@@ -1,0 +1,48 @@
+package assets 
+
+import "schema"
+
+templ Table(applications []schema.Application){
+<div class="overflow-x-auto">
+    <table class="w-full border-gray-300 text-sm text-left rtl:text-right text-white dark:text-gray-400">
+        <thead class="text-xs text-white uppercase border-2 border-gray-500 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Company Name  
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Role
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Application Link
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+            </tr>
+        </thead>
+        <tbody id="table-body" class="border border-gray-700">
+          for _, application := range applications {
+            @TableComponent(&application)
+          }
+        </tbody>
+    </table>
+</div>
+}
+
+templ TableComponent(application *schema.Application){
+    <tr class="border-white dark:bg-gray-800 dark:border-gray-700">
+      <th scope="row" class="border border-gray-700 px-6 py-4 font-medium text-white whitespace-nowrap dark:text-white">
+              {application.CompanyName}
+          </th>
+          <td class="border border-gray-700 px-6 py-4">
+              {application.Role}
+          </td>
+          <td class="border border-gray-700 px-6 py-4">
+              {application.Status}
+          </td>
+          <td class="border border-gray-700 px-6 py-4">
+              {application.ApplicationURL}
+          </td>
+      </tr>
+}

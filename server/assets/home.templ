@@ -1,0 +1,23 @@
+package assets 
+
+import "schema"
+
+templ Home(applications []schema.Application){
+ <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Jobber</title>
+      <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet" />
+    </head>
+    <body class="bg-black">
+      <header class="p-4 bg-pink-300">
+        <h1 class="text-2xl text-center font-bold text-gray-900">Where did you apply bro?</h1>
+      </header>
+      @AddApplication()
+      @Table(applications)
+    </body>
+  </html>
+}
